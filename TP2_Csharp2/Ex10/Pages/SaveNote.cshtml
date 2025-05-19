@@ -1,0 +1,21 @@
+﻿@page 
+@model Ex10.Pages.SaveNoteModel
+@{
+	ViewData["Title"] = "Salvar no arquivo";
+}
+
+<h2>Escreva seu texto para salvar em um arquivo!</h2>
+<form method="post">
+	<label asp-for="Input.Content">Texto: </label>
+	<input asp-for="Input.Content" class="form-control" />
+	<button type="submit" class="btn btn-primary">Salvar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Caminho))
+{
+	<div class="alert-success mt-3">
+		Arquivo salvo: <a href="@Model.Caminho" download>Download</a>
+	</div>
+}
+
+

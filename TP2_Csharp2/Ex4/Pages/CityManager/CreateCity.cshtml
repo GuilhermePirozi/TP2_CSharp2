@@ -1,0 +1,28 @@
+﻿@page 
+@model Ex4.Pages.CityManager.CreateCityModel
+@{
+	ViewData["Title"] = "Cadastre uma cidade turística.";
+}
+
+<h2>Cadastre uma cidade turística!</h2>
+
+<form method="post">
+	<div class="form-group">
+		<label asp-for="Input.CityName">Nome</label>
+		<input asp-for="Input.CityName" class="form-control" />
+		<span asp-validation-for="Input.CityName" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary mt-2">Cadastrar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Mensagem))
+{
+	<div class="alert alert-success mt-3">@Model.Mensagem</div>
+}
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
+

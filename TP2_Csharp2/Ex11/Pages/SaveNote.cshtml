@@ -1,0 +1,47 @@
+﻿@page 
+@model Ex11.Pages.SaveNoteModel
+@{
+	ViewData["Title"] = "Salvar no arquivo";
+}
+
+<h2>Escreva seu texto para salvar em um arquivo!</h2>
+<form method="post">
+	<label asp-for="Input.Content">Texto: </label>
+	<input asp-for="Input.Content" class="form-control" />
+	<button type="submit" class="btn btn-primary mt-2">Salvar</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Caminho))
+{
+	<div class="alert-success mt-3">
+		Anotação salva: <a href="@Model.Caminho" download>Download</a>
+	</div>
+}
+<br />
+<br />
+
+<h2><strong>Anotações salvas</strong></h2>
+
+@if (Model.Arquivos != null && Model.Arquivos.Any())
+{
+
+	<ul>
+		@foreach (var arquivo in Model.Arquivos)
+		{
+			<li>
+				<a asp-page="./SaveNote" asp-route-file="@arquivo">@arquivo</a>
+			</li>
+		}
+	</ul>
+}
+else
+{
+	<p>Nenhum arquivo salvo ainda.</p>
+}
+
+@if (!string.IsNullOrEmpty(Model.ConteudoLido))
+{
+	<br />
+	<h2>Visualização do conteúdo: @Model.NomeSelecionado</h2>
+	<p>@Model.ConteudoLido</p>
+}

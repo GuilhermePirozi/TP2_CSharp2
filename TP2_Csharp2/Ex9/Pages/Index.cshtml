@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Links para CityDetails";
+}
+
+<h2>Links para detalhes das cidades abaixo: </h2>
+
+<ul>
+    @foreach (var cidade in Model.Cities)
+    {
+        <li>
+            <a asp-page="/CityDetails" asp-route-cityName="@cidade">@cidade</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,20 @@
+﻿@page 
+@model Ex1.Pages.CityManager.CreateCityModel
+@{
+	ViewData["Title"] = "Cadastre uma cidade turística.";
+}
+
+<h2>Cadastre uma cidade turística!</h2>
+
+<form method="post">
+	<div class="form-group">
+		<label for="CityName">Nome</label>
+		<input name="CityName" class="form-control" />
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+	</div>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.CityName))
+{
+	<p><strong>Nome da cidade: </strong>@Model.CityName</p>
+}
